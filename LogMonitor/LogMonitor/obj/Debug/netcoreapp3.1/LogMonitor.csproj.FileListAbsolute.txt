@@ -1,0 +1,14 @@
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\bin\Debug\netcoreapp3.1\LogMonitor.exe
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\bin\Debug\netcoreapp3.1\LogMonitor.deps.json
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\bin\Debug\netcoreapp3.1\LogMonitor.runtimeconfig.json
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\bin\Debug\netcoreapp3.1\LogMonitor.runtimeconfig.dev.json
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\bin\Debug\netcoreapp3.1\LogMonitor.dll
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\bin\Debug\netcoreapp3.1\LogMonitor.pdb
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\obj\Debug\netcoreapp3.1\LogMonitor.csproj.GenerateResource.cache
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\obj\Debug\netcoreapp3.1\LogMonitor.AssemblyInfoInputs.cache
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\obj\Debug\netcoreapp3.1\LogMonitor.AssemblyInfo.cs
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\obj\Debug\netcoreapp3.1\LogMonitor.csproj.CoreCompileInputs.cache
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\obj\Debug\netcoreapp3.1\LogMonitor.dll
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\obj\Debug\netcoreapp3.1\LogMonitor.pdb
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\obj\Debug\netcoreapp3.1\LogMonitor.genruntimeconfig.cache
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\obj\Debug\netcoreapp3.1\LogMonitor.LogMonitorForm.resources

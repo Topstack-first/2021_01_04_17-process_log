@@ -1,0 +1,11 @@
+License expiry date determines from log file.
+settings are saved when the program is closed.
+StopDateFrom and StopDateTo are depends on day of week and time only.
+They are not associate year and month even you select it.
+I changed StopDate to Inactive Period.
+Yes, Program icon image can be changed easily.
+Reset Date is associated to <Time based criteria 2)>
+Start & Restart option is located on the bottom as buttons in the GUI
+Yes, Program monitors for high cpu usage currently.
+For RE functions, Can you explain about this function more detail?
+For permission, I cann't know why it occurs. I stared processes as normal method with path.

@@ -1,0 +1,11 @@
+1) Please find program icon attached (are you able to implement with the transparency mask?).
+-yes, I done
+2) Can you check about the 'Last Parse Time' getting updated. For me it's not updating.
+-yes, it is not updated if no parse lines. it is only updated when new parse lines exist in log file.
+3) Can you make the program window to be 80-90% smaller as it's taller 
+than my desktop and I can only see the window fully if I move the task bar to the side.
+-I changed
+4)
+-changed.  it is because of my test version or please check if your log file includes criteria message
+5) RE
+can you explain what means RE?

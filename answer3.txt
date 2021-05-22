@@ -1,0 +1,7 @@
+please check if process path is correct
+
+and if you click restart buttono, It closes all processes and starts all processes newly.
+
+before kill or close processes, event message shows in prev line.
+
+check again this project

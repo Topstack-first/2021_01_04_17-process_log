@@ -1,0 +1,113 @@
+When I click Start Process it says :
+at LogMonitor.LogManager.startProcesses() in 
+E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\LogManager.cs:line 324
+
+Wondering if the Process' already running what would happen when press 'Start Process'?
+Also re-start process has some effect. When I press it closed one of the processes that were running.
+
+System.ComponentModel.Win32Exception (2): The system cannot find the file specified.
+at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+at System.Diagnostics.Process.Start()
+at System.Diagnostics.Process.Start(ProcessStartInfo startInfo)
+at System.Diagnostics.Process.Start(String fileName)
+at LogMonitor.LogManager.startProcesses() in E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\LogManager.cs:line 324
+at LogMonitor.LogManager.restartProcesses() in E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\LogManager.cs:line 339
+at LogMonitor.LogMonitorForm.OnRestartProcess(Object sender, EventArgs e) in E:\projects\fixed\2021_01_04_17(process_log)\LogMonitor\LogMonitor\Form1.cs:line 269
+
+I had asked to include the reason in the log when close/kill a process. 
+(i.e. what event triggered this). Now I get like this:
+03:29:43 01/12/2021 kill process 'terminal_mt4tws_rb': 96
+03:30:43 01/12/2021 kill process 'terminal_mt4tws_rb': 644
+03:31:43 01/12/2021 kill process 'terminal_mt4tws_rb': 3300
+03:32:44 01/12/2021 kill process 'terminal_mt4tws_rb': 164
+03:33:45 01/12/2021 kill process 'terminal_mt4tws_rb': 3636
+03:34:45 01/12/2021 kill process 'terminal_mt4tws_rb': 3472
+
+As a note once a close/kill is issues it should not be looking back at those same 
+log messages that caused that event. Otherwise the program would be stuck in a 
+loop of close/kill and restart.
+*issued
+In the above log. This condition should have been triggered (as per the project PDF file):
+If the Log Monitor program has tried to close OR kill a process more than 3 times (total of any
+closing) in 10 minutes then kill process 1, 2 and 3 together.
+OK. I see later it does log the messages (but not in the case above where it killed the process).
+
+03:47:19 01/12/2021 message found: Expiration:
+03:47:19 01/12/2021 message found: Start connecting to IBGateway or Tws
+03:49:51 01/12/2021 message found: account was Timeout
+03:49:51 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:51 01/12/2021 message found: account was Timeout
+03:49:51 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:51 01/12/2021 message found: account was Timeout
+03:49:51 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:51 01/12/2021 message found: account was Timeout
+03:49:51 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:51 01/12/2021 message found: account was Timeout
+03:49:51 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:51 01/12/2021 message found: account was Timeout
+03:49:51 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:51 01/12/2021 message found: account was Timeout
+03:49:51 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:51 01/12/2021 message found: account was Timeout
+03:49:51 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:51 01/12/2021 message found: cannot be cancelled
+03:49:52 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:52 01/12/2021 message found: cannot be cancelled
+03:49:52 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:52 01/12/2021 message found: cannot be cancelled
+03:49:52 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:52 01/12/2021 message found: cannot be cancelled
+03:49:52 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+03:49:52 01/12/2021 message found: cannot be cancelled
+03:49:52 01/12/2021 close process 'terminal_mt4tws_rb': 2152
+
+Sharing another example where it seems stuck in a kill loop
+03:56:28 01/12/2021 message found: Expiration:
+03:56:28 01/12/2021 message found: Start connecting to IBGateway or Tws
+03:56:28 01/12/2021 message found: Expiration:
+03:56:28 01/12/2021 message found: Start connecting to IBGateway or Tws
+03:56:28 01/12/2021 message found: Start connecting to IBGateway or Tws
+04:12:37 01/12/2021 kill process 'terminal_mt4tws_rb': 3172
+04:13:22 01/12/2021 kill process 'terminal_mt4tws_rb': 2884
+04:14:22 01/12/2021 kill process 'terminal_mt4tws_rb': 4012
+04:15:22 01/12/2021 kill process 'terminal_mt4tws_rb': 4040
+04:16:23 01/12/2021 kill process 'terminal_mt4tws_rb': 3332
+04:17:23 01/12/2021 kill process 'terminal_mt4tws_rb': 2560
+04:18:23 01/12/2021 kill process 'terminal_mt4tws_rb': 2944
+04:19:24 01/12/2021 kill process 'terminal_mt4tws_rb': 2404
+04:20:25 01/12/2021 kill process 'terminal_mt4tws_rb': 2232
+04:21:25 01/12/2021 kill process 'terminal_mt4tws_rb': 3352
+04:22:26 01/12/2021 kill process 'terminal_mt4tws_rb': 3284
+04:23:27 01/12/2021 kill process 'terminal_mt4tws_rb': 3788
+04:24:27 01/12/2021 kill process 'terminal_mt4tws_rb': 516
+04:25:27 01/12/2021 kill process 'terminal_mt4tws_rb': 1376
+04:26:27 01/12/2021 kill process 'terminal_mt4tws_rb': 3272
+04:27:28 01/12/2021 kill process 'terminal_mt4tws_rb': 2152
+04:28:28 01/12/2021 kill process 'terminal_mt4tws_rb': 3192
+04:29:28 01/12/2021 kill process 'terminal_mt4tws_rb': 2952
+04:30:28 01/12/2021 kill process 'terminal_mt4tws_rb': 3288
+04:31:30 01/12/2021 kill process 'terminal_mt4tws_rb': 3244
+04:32:30 01/12/2021 kill process 'terminal_mt4tws_rb': 4044
+04:33:30 01/12/2021 kill process 'terminal_mt4tws_rb': 3616
+04:50:42 01/12/2021 kill process 'terminal_mt4tws_rb': 2376
+04:51:28 01/12/2021 kill process 'terminal_mt4tws_rb': 2844
+04:52:28 01/12/2021 kill process 'terminal_mt4tws_rb': 2440
+In the log can you include the actual time of the message (from the original log file).
+
+03:54:23 01/13/2021 kill process 'terminal_mt4tws_rb': 2604
+03:55:24 01/13/2021 kill process 'terminal_mt4tws_rb': 3064
+03:56:25 01/13/2021 kill process 'terminal_mt4tws_rb': 2456
+03:57:25 01/13/2021 kill process 'terminal_mt4tws_rb': 1860
+03:58:25 01/13/2021 kill process 'terminal_mt4tws_rb': 2868
+03:59:25 01/13/2021 kill process 'terminal_mt4tws_rb': 2580
+04:00:26 01/13/2021 kill process 'terminal_mt4tws_rb': 2724
+04:01:26 01/13/2021 kill process 'terminal_mt4tws_rb': 1608
+04:02:26 01/13/2021 kill process 'terminal_mt4tws_rb': 1864
+04:03:26 01/13/2021 kill process 'terminal_mt4tws_rb': 2796
+04:04:26 01/13/2021 kill process 'terminal_mt4tws_rb': 2932
+04:05:27 01/13/2021 kill process 'terminal_mt4tws_rb': 2432
+04:06:27 01/13/2021 kill process 'terminal_mt4tws_rb': 2036
+04:07:12 01/13/2021 kill process 'terminal_mt4tws_rb': 2756
+04:07:28 01/13/2021 kill process 'terminal_mt4tws_rb': 2956
+04:08:28 01/13/2021 kill process 'terminal_mt4tws_rb': 204
+04:09:29 01/13/2021 kill process 'terminal_mt4tws_rb': 3024
